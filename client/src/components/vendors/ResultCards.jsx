@@ -253,25 +253,25 @@ export default function ResultCards({
         })}
       </div>
 
-      {/* Floating Compare Action Dock - Pinned immediately on the left */}
+      {/* Floating Compare Action Dock - Pinned immediately on the left, responsive on mobile */}
       {selectedForCompare.length > 0 && (
-        <div className="fixed left-3 sm:left-6 top-1/2 -translate-y-1/2 z-50 bg-card/95 dark:bg-zinc-900/95 text-foreground p-3 sm:p-3.5 rounded-2xl shadow-2xl border border-border/90 backdrop-blur-xl flex flex-col items-center gap-2.5 animate-in slide-in-from-left duration-200 w-[170px] sm:w-[190px] ring-1 ring-black/5 dark:ring-white/10">
+        <div className="fixed left-2 sm:left-6 top-1/2 -translate-y-1/2 z-50 bg-card/95 dark:bg-zinc-900/95 text-foreground p-2.5 sm:p-3.5 rounded-2xl shadow-2xl border border-border/90 backdrop-blur-xl flex flex-col items-center gap-2 sm:gap-2.5 animate-in slide-in-from-left duration-200 w-[140px] xs:w-[160px] sm:w-[190px] ring-1 ring-black/5 dark:ring-white/10">
           {/* Header & Count */}
-          <div className="w-full flex items-center justify-between gap-1 border-b border-border/60 pb-2">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-bold">
+          <div className="w-full flex items-center justify-between gap-1 border-b border-border/60 pb-1.5 sm:pb-2">
+            <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-bold">
               Compare
             </span>
-            <span className="text-[11px] font-mono font-bold px-1.5 py-0.5 rounded-md bg-[#8E2631]/10 text-[#8E2631] dark:bg-[#7C3AED]/20 dark:text-[#DDD6FE] border border-[#8E2631]/20 dark:border-[#7C3AED]/30">
+            <span className="text-[10px] sm:text-[11px] font-mono font-bold px-1.5 py-0.5 rounded-md bg-[#8E2631]/10 text-[#8E2631] dark:bg-[#7C3AED]/20 dark:text-[#DDD6FE] border border-[#8E2631]/20 dark:border-[#7C3AED]/30">
               {selectedForCompare.length}/3
             </span>
           </div>
 
           {/* Selected Vendor Monogram Avatars */}
-          <div className="w-full flex items-center justify-center gap-1.5 py-0.5">
+          <div className="w-full flex items-center justify-center gap-1 sm:gap-1.5 py-0.5">
             {selectedForCompare.map((v) => (
               <div
                 key={v.id}
-                className="w-8 h-8 rounded-xl bg-muted text-foreground flex items-center justify-center font-mono font-bold text-xs border border-border shadow-2xs relative group"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-muted text-foreground flex items-center justify-center font-mono font-bold text-[10px] sm:text-xs border border-border shadow-2xs relative group"
                 title={v.name}
               >
                 {v.logoText || v.shortName.substring(0, 2)}
@@ -288,17 +288,17 @@ export default function ResultCards({
           </div>
 
           {/* Action Buttons */}
-          <div className="w-full space-y-1.5 pt-1">
+          <div className="w-full space-y-1 sm:space-y-1.5 pt-0.5 sm:pt-1">
             <button
               onClick={onOpenComparePanel}
-              className="w-full bg-[#8E2631] hover:bg-[#7A1E27] dark:bg-[#7C3AED] dark:hover:bg-[#6D28D9] text-white text-xs font-bold py-2 px-2.5 rounded-xl transition-all shadow-md hover:shadow-lg dark:shadow-[0_0_15px_rgba(124,58,237,0.4)] flex items-center justify-center gap-1.5 cursor-pointer"
+              className="w-full bg-[#8E2631] hover:bg-[#7A1E27] dark:bg-[#7C3AED] dark:hover:bg-[#6D28D9] text-white text-[11px] sm:text-xs font-bold py-1.5 sm:py-2 px-2 sm:px-2.5 rounded-xl transition-all shadow-md hover:shadow-lg dark:shadow-[0_0_15px_rgba(124,58,237,0.4)] flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer"
             >
-              <Columns className="w-3.5 h-3.5" />
+              <Columns className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               <span>Compare Matrix</span>
             </button>
             <button
               onClick={() => onToggleCompare(null)}
-              className="w-full text-[11px] font-mono font-medium text-muted-foreground hover:text-rose-500 py-1 transition-colors cursor-pointer text-center"
+              className="w-full text-[10px] sm:text-[11px] font-mono font-medium text-muted-foreground hover:text-rose-500 py-0.5 sm:py-1 transition-colors cursor-pointer text-center"
               title="Cancel and clear selection"
             >
               Cancel / Clear

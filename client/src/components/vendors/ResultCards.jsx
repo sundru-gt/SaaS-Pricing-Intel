@@ -221,7 +221,7 @@ export default function ResultCards({
                   onClick={() => handleCompareClick(vendor)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all border cursor-pointer ${
                     isSelected
-                      ? "bg-foreground text-background border-foreground shadow-2xs"
+                      ? "bg-[#8E2631] text-white border-[#8E2631] dark:bg-[#7C3AED] dark:text-white dark:border-[#7C3AED] dark:shadow-[0_0_10px_rgba(124,58,237,0.35)] shadow-2xs"
                       : "bg-card hover:bg-muted text-foreground border-border hover:border-foreground/30"
                   }`}
                   aria-pressed={isSelected}
@@ -229,7 +229,7 @@ export default function ResultCards({
                   <div
                     className={`w-3.5 h-3.5 rounded flex items-center justify-center border ${
                       isSelected
-                        ? "bg-background text-foreground border-background"
+                        ? "bg-white text-[#8E2631] dark:text-[#7C3AED] border-white"
                         : "border-muted-foreground/40"
                     }`}
                   >
@@ -261,7 +261,7 @@ export default function ResultCards({
             <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-bold">
               Compare
             </span>
-            <span className="text-[11px] font-mono font-bold px-1.5 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+            <span className="text-[11px] font-mono font-bold px-1.5 py-0.5 rounded-md bg-[#8E2631]/10 text-[#8E2631] dark:bg-[#7C3AED]/20 dark:text-[#DDD6FE] border border-[#8E2631]/20 dark:border-[#7C3AED]/30">
               {selectedForCompare.length}/3
             </span>
           </div>
@@ -291,7 +291,7 @@ export default function ResultCards({
           <div className="w-full space-y-1.5 pt-1">
             <button
               onClick={onOpenComparePanel}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2 px-2.5 rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-1.5 cursor-pointer"
+              className="w-full bg-[#8E2631] hover:bg-[#7A1E27] dark:bg-[#7C3AED] dark:hover:bg-[#6D28D9] text-white text-xs font-bold py-2 px-2.5 rounded-xl transition-all shadow-md hover:shadow-lg dark:shadow-[0_0_15px_rgba(124,58,237,0.4)] flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <Columns className="w-3.5 h-3.5" />
               <span>Compare Matrix</span>

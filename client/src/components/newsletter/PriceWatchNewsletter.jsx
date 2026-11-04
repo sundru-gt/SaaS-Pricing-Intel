@@ -88,7 +88,7 @@ export default function PriceWatchNewsletter({ onShowToast }) {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="px-4 py-2 rounded-xl bg-foreground text-background text-xs font-bold hover:opacity-90 disabled:opacity-50 transition-opacity flex items-center justify-center gap-1.5 shadow-2xs flex-shrink-0"
+                className="px-4 py-2 rounded-xl bg-[#8E2631] text-white dark:bg-[#7C3AED] dark:text-white dark:shadow-[0_0_12px_rgba(124,58,237,0.4)] text-xs font-bold hover:opacity-90 disabled:opacity-50 transition-all flex items-center justify-center gap-1.5 shadow-2xs flex-shrink-0 cursor-pointer"
               >
                 {status === "loading" ? (
                   <>

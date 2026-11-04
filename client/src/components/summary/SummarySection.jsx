@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, ChevronUp, ExternalLink, Copy, Check, Clock, Sparkles, ShieldCheck, Bot } from "lucide-react";
+import { ChevronDown, ChevronUp, ExternalLink, Copy, Check, Clock, Sparkles, ShieldCheck } from "lucide-react";
 import SoftwareLogo from "../shared/SoftwareLogo.jsx";
 import { generateSummaryApi } from "../../lib/api.js";
 
@@ -143,8 +143,6 @@ export default function SummarySection({
     }
   };
 
-  const isRealLLM = sourceType === "gemini" || sourceType === "openai";
-
   return (
     <div className="bg-card border border-border rounded-2xl p-4 sm:p-5 shadow-2xs space-y-4 transition-all hover:border-border/90 relative overflow-hidden">
       {/* Decorative subtle top edge glow */}
@@ -159,16 +157,6 @@ export default function SummarySection({
           <span className="font-mono text-[11px] font-semibold text-foreground uppercase tracking-wider truncate">
             Pricing Intelligence Summary
           </span>
-          {isRealLLM ? (
-            <span className="hidden sm:inline-flex items-center gap-1 text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 font-semibold">
-              <Bot className="w-2.5 h-2.5" />
-              <span>LLM Synthesis</span>
-            </span>
-          ) : (
-            <span className="hidden sm:inline-flex items-center gap-1 text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-semibold">
-              <span>Verified AI Briefing</span>
-            </span>
-          )}
         </div>
 
         <div className="flex items-center gap-2 text-[11px] font-mono text-muted-foreground flex-shrink-0">
@@ -204,7 +192,7 @@ export default function SummarySection({
         {displayedText && displayedText.length > 120 && (
           <button
             onClick={() => setExpanded(!expanded)}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-foreground/80 hover:text-foreground transition-colors py-0.5 group cursor-pointer"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#8E2631] dark:text-[#A78BFA] hover:underline transition-colors py-0.5 group cursor-pointer"
           >
             <span>{expanded ? "Show less" : "Read more"}</span>
             {expanded ? (

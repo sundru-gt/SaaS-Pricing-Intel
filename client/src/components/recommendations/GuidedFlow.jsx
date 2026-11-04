@@ -92,9 +92,9 @@ export default function GuidedFlow({
                 onClick={() => setCurrentStep(idx)}
                 className={`flex-1 h-full rounded-full transition-all duration-300 ${
                   isCurrent
-                    ? "bg-foreground"
+                    ? "bg-[#8E2631] dark:bg-[#7C3AED]"
                     : hasAnswer
-                    ? "bg-foreground/50 hover:bg-foreground/70"
+                    ? "bg-[#8E2631]/50 dark:bg-[#7C3AED]/50 hover:bg-[#8E2631]/70 dark:hover:bg-[#7C3AED]/70"
                     : "bg-muted-foreground/20 hover:bg-muted-foreground/30"
                 }`}
                 title={`Jump to Question ${idx + 1}: ${q.title}`}
@@ -132,7 +132,7 @@ export default function GuidedFlow({
               onClick={() => handleSelectOption(opt)}
               className={`flex items-start justify-between p-3 rounded-xl border text-left transition-all group ${
                 isSelected
-                  ? "bg-muted/70 border-foreground text-foreground shadow-xs ring-1 ring-foreground"
+                  ? "bg-[#8E2631]/10 border-[#8E2631] text-[#8E2631] dark:bg-[#7C3AED]/20 dark:border-[#7C3AED] dark:text-[#DDD6FE] shadow-xs ring-1 ring-[#8E2631] dark:ring-[#7C3AED]"
                   : "bg-card hover:bg-muted/40 hover:border-foreground/30 text-foreground border-border"
               }`}
             >
@@ -147,7 +147,7 @@ export default function GuidedFlow({
               <div
                 className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 border transition-colors ${
                   isSelected
-                    ? "bg-foreground border-foreground text-background"
+                    ? "bg-[#8E2631] border-[#8E2631] text-white dark:bg-[#7C3AED] dark:border-[#7C3AED]"
                     : "border-border group-hover:border-foreground/40"
                 }`}
               >
@@ -179,9 +179,9 @@ export default function GuidedFlow({
           type="button"
           onClick={handleNext}
           disabled={!isAnswered}
-          className={`flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-2xs ${
+          className={`flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-2xs ${
             isAnswered
-              ? "bg-foreground text-background hover:opacity-90 cursor-pointer active:scale-98"
+              ? "bg-[#8E2631] text-white dark:bg-[#7C3AED] dark:text-white dark:shadow-[0_0_12px_rgba(124,58,237,0.4)] hover:opacity-90 cursor-pointer active:scale-98"
               : "bg-muted text-muted-foreground opacity-50 cursor-not-allowed"
           }`}
           title={isAnswered ? (isLastStep ? "View final ranked recommendations" : "Advance to next question") : "Please select an option to continue"}

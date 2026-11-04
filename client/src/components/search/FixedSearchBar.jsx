@@ -68,7 +68,7 @@ export default function FixedSearchBar({
             <button
               type="submit"
               disabled={inputVal.trim() === ""}
-              className="p-2 rounded-xl bg-foreground text-background disabled:opacity-30 disabled:pointer-events-none transition-all flex-shrink-0 hover:opacity-90 shadow-2xs"
+              className="p-2 rounded-xl bg-[#8E2631] text-white dark:bg-[#7C3AED] dark:text-white dark:shadow-[0_0_10px_rgba(124,58,237,0.4)] disabled:opacity-30 disabled:pointer-events-none transition-all flex-shrink-0 hover:opacity-90 shadow-2xs cursor-pointer"
               title="Submit query"
               aria-label="Submit search query"
             >

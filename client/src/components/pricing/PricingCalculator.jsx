@@ -92,12 +92,12 @@ export default function PricingCalculator({
         </div>
 
         {/* Billing cycle segmented toggle */}
-        <div className="inline-flex items-center p-0.5 bg-muted rounded-lg text-xs font-medium self-start sm:self-auto border border-border/60">
+        <div className="inline-flex items-center p-0.5 bg-muted rounded-xl text-xs font-medium self-start sm:self-auto border border-border/60">
           <button
             onClick={() => setBillingCycle("monthly")}
-            className={`px-3 py-1 rounded-md transition-all ${
+            className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
               billingCycle === "monthly"
-                ? "bg-card text-foreground shadow-2xs font-semibold"
+                ? "bg-[#8E2631] text-white dark:bg-[#7C3AED] dark:text-white shadow-xs font-semibold"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -105,14 +105,14 @@ export default function PricingCalculator({
           </button>
           <button
             onClick={() => setBillingCycle("annual")}
-            className={`flex items-center gap-1.5 px-3 py-1 rounded-md transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-lg transition-all cursor-pointer ${
               billingCycle === "annual"
-                ? "bg-card text-foreground shadow-2xs font-semibold"
+                ? "bg-[#8E2631] text-white dark:bg-[#7C3AED] dark:text-white shadow-xs font-semibold"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
             <span>Annual</span>
-            <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-500/10 px-1 py-0.2 rounded">
+            <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-300 font-semibold bg-emerald-500/15 px-1 py-0.2 rounded">
               Save ~20%
             </span>
           </button>
@@ -172,9 +172,9 @@ export default function PricingCalculator({
               <button
                 key={preset}
                 onClick={() => setSeats(preset)}
-                className={`px-1.5 py-0.5 rounded text-[10px] font-mono transition-colors ${
+                className={`px-2 py-0.5 rounded-md text-[10px] font-mono transition-colors cursor-pointer ${
                   seats === preset
-                    ? "bg-foreground text-background font-semibold"
+                    ? "bg-[#8E2631] text-white dark:bg-[#7C3AED] dark:text-white font-semibold shadow-2xs"
                     : "bg-muted text-muted-foreground hover:text-foreground"
                 }`}
               >

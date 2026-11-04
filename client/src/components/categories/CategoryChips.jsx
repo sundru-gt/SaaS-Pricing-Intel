@@ -70,7 +70,7 @@ export default function CategoryChips({
                 onClick={() => onSelectCategory("all")}
                 className={`flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-medium transition-all shadow-2xs cursor-pointer ${
                   isAll
-                    ? "bg-foreground text-background font-semibold"
+                    ? "bg-[#8E2631] text-white dark:bg-[#7C3AED] dark:text-white font-bold shadow-sm dark:shadow-[0_0_12px_rgba(124,58,237,0.35)]"
                     : "bg-card border border-border hover:bg-muted text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -109,7 +109,7 @@ export default function CategoryChips({
                 onClick={() => onSelectSubType("All")}
                 className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                   activeSubType === "All"
-                    ? "bg-foreground text-background shadow-2xs font-semibold"
+                    ? "bg-[#8E2631] text-white dark:bg-[#7C3AED] dark:text-white shadow-sm dark:shadow-[0_0_12px_rgba(124,58,237,0.35)] font-bold"
                     : "bg-card border border-border hover:bg-muted text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -127,13 +127,13 @@ export default function CategoryChips({
                     onClick={() => onSelectSubType(sub)}
                     className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                       isSelected
-                        ? "bg-foreground text-background shadow-2xs font-semibold"
+                        ? "bg-[#8E2631] text-white dark:bg-[#7C3AED] dark:text-white shadow-sm dark:shadow-[0_0_12px_rgba(124,58,237,0.35)] font-bold"
                         : "bg-card border border-border hover:bg-muted hover:border-foreground/30 text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     <span
                       className={`w-1.5 h-1.5 rounded-full ${
-                        isSelected ? "bg-background" : activeTheme.color.replace("text-", "bg-")
+                        isSelected ? "bg-white" : activeTheme.color.replace("text-", "bg-")
                       }`}
                     />
                     <span>{sub}</span>

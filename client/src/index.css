@@ -4,42 +4,42 @@
 
 @layer base {
   :root {
-    --background: 0 0% 99%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.625rem;
+    --background: 340 60% 99%; /* #FEF8FC soft blush luminous */
+    --foreground: 350 35% 15%; /* #261619 deep warm charcoal */
+    --card: 0 0% 100%; /* #FFFFFF crisp white */
+    --card-foreground: 350 35% 15%;
+    --primary: 353 62% 35%; /* #8E2631 deep crimson/wine */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 345 50% 96%; /* #FDF2F5 soft blush */
+    --secondary-foreground: 353 62% 35%;
+    --muted: 345 40% 95%; /* #F9EDF1 */
+    --muted-foreground: 350 15% 45%; /* #7D686E warm rose-stone */
+    --accent: 345 60% 96%; /* #FCEBF0 */
+    --accent-foreground: 353 62% 35%;
+    --border: 345 30% 91%; /* #F4E4E9 delicate rose border */
+    --input: 345 30% 91%;
+    --ring: 353 62% 35%;
+    --radius: 0.75rem;
     --slider-fill: #000000;
     --slider-track: #ffffff;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 5.5%;
-    --card-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 12%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 12%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 12%;
-    --accent-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --background: 250 30% 9%; /* #141224 deep obsidian navy-violet */
+    --foreground: 240 20% 98%; /* #F8FAFC crisp lavender-white */
+    --card: 250 28% 13%; /* #18162A dark obsidian purple */
+    --card-foreground: 240 20% 98%;
+    --primary: 260 85% 65%; /* #8B5CF6 / #7C3AED electric violet */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 250 25% 18%; /* #221F38 */
+    --secondary-foreground: 250 60% 92%;
+    --muted: 250 25% 18%; /* #221F38 */
+    --muted-foreground: 245 15% 60%; /* #938FA8 soft lavender-slate */
+    --accent: 255 35% 22%; /* #2D284D */
+    --accent-foreground: 0 0% 100%;
+    --border: 250 22% 22%; /* #2C2843 fine violet hairline */
+    --input: 250 22% 22%;
+    --ring: 260 85% 65%;
     --slider-fill: #ffffff;
     --slider-track: #000000;
   }
@@ -52,6 +52,7 @@
   html,
   body {
     max-width: 100vw;
+    min-height: 100vh;
     overflow-x: clip;
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
@@ -60,17 +61,32 @@
     -webkit-text-size-adjust: 100%;
     overflow-wrap: break-word;
     word-break: break-word;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(255, 232, 238, 0.75) 0px, transparent 40%),
+      radial-gradient(at 100% 0%, rgba(253, 213, 221, 0.65) 0px, transparent 40%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .dark html,
+  .dark body,
+  html.dark body {
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(52, 33, 125, 0.6) 0px, transparent 45%),
+      radial-gradient(at 100% 0%, rgba(57, 35, 135, 0.55) 0px, transparent 45%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
 }
 
 /* Subtle Linear-grade background grid pattern */
 .bg-grid-subtle {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(142, 38, 49, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
 .dark .bg-grid-subtle {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 

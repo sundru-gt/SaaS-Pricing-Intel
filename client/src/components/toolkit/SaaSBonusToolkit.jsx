@@ -17,15 +17,15 @@ export default function SaaSBonusToolkit({ currency = "USD" }) {
   const [upliftPercent, setUpliftPercent] = useState(8);
 
   const unusedResult = calculateUnusedSeatsWaste({
-    costPerSeatMonthly: monthlySeatCost,
-    totalSeats: totalProvisioned,
-    unusedSeats: unusedCount,
+    costPerSeatMonthly: Number(monthlySeatCost) || 0,
+    totalSeats: Number(totalProvisioned) || 1,
+    unusedSeats: Number(unusedCount) || 0,
     currency,
   });
 
   const renewalResult = calculateRenewalUplift({
-    currentAnnualCost: annualSpend,
-    annualUpliftPercent: upliftPercent,
+    currentAnnualCost: Number(annualSpend) || 0,
+    annualUpliftPercent: Number(upliftPercent) || 0,
     years: 3,
     currency,
   });
@@ -143,16 +143,16 @@ export default function SaaSBonusToolkit({ currency = "USD" }) {
                 Annual Capital Drain (Shelfware)
               </span>
               <span className="text-xl sm:text-2xl font-extrabold font-mono text-rose-600 dark:text-rose-400 tabular-nums">
-                {formatCurrency(unusedResult.annualWaste, currency)} / yr
+                {formatCurrency(unusedResult.annualWaste || unusedResult.totalWaste || 0, currency)} / yr
               </span>
             </div>
 
             <div className="text-left sm:text-right">
               <span className="text-xs text-muted-foreground font-mono block">
-                {unusedResult.wastePercentage}% of subscription budget is unutilized
+                {unusedResult.wastePercentage || 0}% of subscription budget is unutilized
               </span>
               <span className="text-[11px] text-muted-foreground">
-                Monthly leak: {formatCurrency(unusedResult.monthlyWaste, currency)}/mo
+                Monthly leak: {formatCurrency(unusedResult.monthlyWaste || 0, currency)}/mo
               </span>
             </div>
           </div>
@@ -213,14 +213,14 @@ export default function SaaSBonusToolkit({ currency = "USD" }) {
                 Projected Year-3 Annual Spend
               </span>
               <span className="text-xl sm:text-2xl font-extrabold font-mono text-foreground tabular-nums">
-                {formatCurrency(renewalResult.finalAnnualCost, currency)} / yr
+                {formatCurrency(renewalResult.finalAnnualCost || 0, currency)} / yr
               </span>
             </div>
 
             <div className="flex items-center justify-between text-xs pt-2 border-t border-border/60">
               <span className="text-muted-foreground">Cumulative 3-Year Extra Budget:</span>
               <span className="font-bold font-mono text-amber-600 dark:text-amber-400">
-                +{formatCurrency(renewalResult.cumulativeIncrease, currency)}
+                +{formatCurrency(renewalResult.cumulativeIncrease || 0, currency)}
               </span>
             </div>
           </div>

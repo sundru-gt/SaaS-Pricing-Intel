@@ -253,41 +253,55 @@ export default function ResultCards({
         })}
       </div>
 
-      {/* Floating Compare Action Bar */}
+      {/* Floating Compare Action Dock - Pinned immediately on the left */}
       {selectedForCompare.length > 0 && (
-        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-40 bg-foreground text-background px-3.5 sm:px-4 py-2.5 rounded-2xl shadow-2xl flex items-center justify-between sm:justify-start gap-3.5 border border-background/20 animate-in slide-in-from-bottom duration-200 w-[calc(100vw-2rem)] max-w-md sm:w-auto">
-          {/* Selected Vendor Monogram Avatars */}
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="flex -space-x-2 overflow-hidden">
-              {selectedForCompare.map((v) => (
-                <div
-                  key={v.id}
-                  className="w-6 h-6 rounded-full bg-background text-foreground flex items-center justify-center font-mono font-bold text-[9px] border-2 border-foreground flex-shrink-0"
-                  title={v.name}
-                >
-                  {v.logoText || v.shortName.substring(0, 2)}
-                </div>
-              ))}
-            </div>
-
-            <span className="text-xs font-bold font-mono truncate">
-              {selectedForCompare.length} / 3 selected
+        <div className="fixed left-3 sm:left-6 top-1/2 -translate-y-1/2 z-50 bg-card/95 dark:bg-zinc-900/95 text-foreground p-3 sm:p-3.5 rounded-2xl shadow-2xl border border-border/90 backdrop-blur-xl flex flex-col items-center gap-2.5 animate-in slide-in-from-left duration-200 w-[170px] sm:w-[190px] ring-1 ring-black/5 dark:ring-white/10">
+          {/* Header & Count */}
+          <div className="w-full flex items-center justify-between gap-1 border-b border-border/60 pb-2">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-bold">
+              Compare
+            </span>
+            <span className="text-[11px] font-mono font-bold px-1.5 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+              {selectedForCompare.length}/3
             </span>
           </div>
 
-          <div className="flex items-center gap-2 flex-shrink-0">
+          {/* Selected Vendor Monogram Avatars */}
+          <div className="w-full flex items-center justify-center gap-1.5 py-0.5">
+            {selectedForCompare.map((v) => (
+              <div
+                key={v.id}
+                className="w-8 h-8 rounded-xl bg-muted text-foreground flex items-center justify-center font-mono font-bold text-xs border border-border shadow-2xs relative group"
+                title={v.name}
+              >
+                {v.logoText || v.shortName.substring(0, 2)}
+                <button
+                  type="button"
+                  onClick={() => onToggleCompare(v)}
+                  className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-rose-500 text-white text-[9px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                  title={`Remove ${v.name}`}
+                >
+                  ×
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="w-full space-y-1.5 pt-1">
             <button
               onClick={onOpenComparePanel}
-              className="bg-background text-foreground text-xs font-bold px-3 py-1.5 rounded-xl hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2 px-2.5 rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-1.5 cursor-pointer"
             >
-              Compare Matrix ({selectedForCompare.length})
+              <Columns className="w-3.5 h-3.5" />
+              <span>Compare Matrix</span>
             </button>
             <button
               onClick={() => onToggleCompare(null)}
-              className="text-xs text-background/70 hover:text-background px-1.5 py-1 cursor-pointer"
-              title="Clear selection"
+              className="w-full text-[11px] font-mono font-medium text-muted-foreground hover:text-rose-500 py-1 transition-colors cursor-pointer text-center"
+              title="Cancel and clear selection"
             >
-              Clear
+              Cancel / Clear
             </button>
           </div>
         </div>

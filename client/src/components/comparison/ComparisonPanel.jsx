@@ -31,11 +31,28 @@ export default function ComparisonPanel({
     });
   }, [vendors, seats, billingCycle, currency]);
 
-  const minMonthly = useMemo(() => {
-    const costs = computed
-      .filter((c) => !c.calc.isFree && c.calc.monthlyTotal > 0)
-      .map((c) => c.calc.monthlyTotal);
+  const bestMonthly = useMemo(() => {
+    const costs = computed.map((c) => c.calc.monthlyTotal);
     return costs.length > 0 ? Math.min(...costs) : null;
+  }, [computed]);
+
+  const bestPerUser = useMemo(() => {
+    const rates = computed.map((c) => c.calc.monthlyPerUser);
+    return rates.length > 0 ? Math.min(...rates) : null;
+  }, [computed]);
+
+  const bestAnnual = useMemo(() => {
+    const totals = computed.map((c) => c.calc.annualTotal);
+    return totals.length > 0 ? Math.min(...totals) : null;
+  }, [computed]);
+
+  const hasAnyFree = useMemo(() => {
+    return computed.some((c) => c.vendor.hasFreePlan);
+  }, [computed]);
+
+  const bestMinSeats = useMemo(() => {
+    const mins = computed.map((c) => c.plan?.minSeats || 1);
+    return mins.length > 0 ? Math.min(...mins) : 1;
   }, [computed]);
 
   if (!vendors || vendors.length === 0) return null;
@@ -126,17 +143,28 @@ export default function ComparisonPanel({
                 Total Monthly ({seats} seats)
               </div>
               {computed.map(({ vendor, calc }) => {
-                const isLowest = minMonthly && calc.monthlyTotal === minMonthly;
+                const isBest = bestMonthly !== null && calc.monthlyTotal === bestMonthly;
                 return (
-                  <div key={vendor.id} className="col-span-3 space-y-0.5">
-                    <span className="text-sm sm:text-base font-bold font-mono text-foreground block tabular-nums">
+                  <div
+                    key={vendor.id}
+                    className={`col-span-3 space-y-1 p-2.5 rounded-xl transition-all ${
+                      isBest
+                        ? "bg-blue-500/10 dark:bg-blue-950/40 border-2 border-blue-500/60 shadow-xs"
+                        : "border border-transparent"
+                    }`}
+                  >
+                    <span
+                      className={`text-sm sm:text-base font-bold font-mono block tabular-nums ${
+                        isBest ? "text-blue-600 dark:text-blue-400" : "text-foreground"
+                      }`}
+                    >
                       {calc.isFree
                         ? "Free ($0)"
                         : `${formatCurrency(calc.monthlyTotal, currency)}/mo`}
                     </span>
-                    {isLowest && (
-                      <span className="inline-block text-[10px] font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.2 rounded">
-                        Lowest Cost
+                    {isBest && (
+                      <span className="inline-flex items-center gap-1 text-[9px] font-mono font-bold text-white bg-blue-600 px-1.5 py-0.5 rounded-md shadow-2xs">
+                        ★ Best Monthly
                       </span>
                     )}
                   </div>
@@ -149,11 +177,32 @@ export default function ComparisonPanel({
               <div className="col-span-3 text-xs font-medium text-muted-foreground">
                 Effective Cost / Seat
               </div>
-              {computed.map(({ vendor, calc }) => (
-                <div key={vendor.id} className="col-span-3 text-xs font-mono font-semibold text-foreground tabular-nums">
-                  {formatCurrency(calc.monthlyPerUser, currency)} / seat / mo
-                </div>
-              ))}
+              {computed.map(({ vendor, calc }) => {
+                const isBest = bestPerUser !== null && calc.monthlyPerUser === bestPerUser;
+                return (
+                  <div
+                    key={vendor.id}
+                    className={`col-span-3 space-y-1 p-2.5 rounded-xl transition-all ${
+                      isBest
+                        ? "bg-blue-500/10 dark:bg-blue-950/40 border-2 border-blue-500/60 shadow-xs"
+                        : "border border-transparent"
+                    }`}
+                  >
+                    <span
+                      className={`text-xs font-mono font-bold block tabular-nums ${
+                        isBest ? "text-blue-600 dark:text-blue-400" : "text-foreground"
+                      }`}
+                    >
+                      {formatCurrency(calc.monthlyPerUser, currency)} / seat / mo
+                    </span>
+                    {isBest && (
+                      <span className="inline-flex items-center gap-1 text-[9px] font-mono font-bold text-white bg-blue-600 px-1.5 py-0.5 rounded-md shadow-2xs">
+                        ★ Best Per-Seat
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Metric 3: Annual Spend */}
@@ -161,11 +210,32 @@ export default function ComparisonPanel({
               <div className="col-span-3 text-xs font-medium text-muted-foreground">
                 Annual Contract Spend
               </div>
-              {computed.map(({ vendor, calc }) => (
-                <div key={vendor.id} className="col-span-3 text-xs font-mono font-semibold text-foreground tabular-nums">
-                  {formatCurrency(calc.annualTotal, currency)} / yr
-                </div>
-              ))}
+              {computed.map(({ vendor, calc }) => {
+                const isBest = bestAnnual !== null && calc.annualTotal === bestAnnual;
+                return (
+                  <div
+                    key={vendor.id}
+                    className={`col-span-3 space-y-1 p-2.5 rounded-xl transition-all ${
+                      isBest
+                        ? "bg-blue-500/10 dark:bg-blue-950/40 border-2 border-blue-500/60 shadow-xs"
+                        : "border border-transparent"
+                    }`}
+                  >
+                    <span
+                      className={`text-xs font-mono font-bold block tabular-nums ${
+                        isBest ? "text-blue-600 dark:text-blue-400" : "text-foreground"
+                      }`}
+                    >
+                      {formatCurrency(calc.annualTotal, currency)} / yr
+                    </span>
+                    {isBest && (
+                      <span className="inline-flex items-center gap-1 text-[9px] font-mono font-bold text-white bg-blue-600 px-1.5 py-0.5 rounded-md shadow-2xs">
+                        ★ Best Annual Total
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Metric 4: Free Plan Availability */}
@@ -173,38 +243,68 @@ export default function ComparisonPanel({
               <div className="col-span-3 text-xs font-medium text-muted-foreground">
                 Free Forever Tier
               </div>
-              {computed.map(({ vendor }) => (
-                <div key={vendor.id} className="col-span-3 text-xs flex items-center gap-1.5 font-mono">
-                  {vendor.hasFreePlan ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-emerald-500 stroke-[3]" />
-                      <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Available</span>
-                    </>
-                  ) : (
-                    <>
-                      <Minus className="w-3.5 h-3.5 text-muted-foreground" />
-                      <span className="text-muted-foreground">14-day trial only</span>
-                    </>
-                  )}
-                </div>
-              ))}
+              {computed.map(({ vendor }) => {
+                const hasFree = vendor.hasFreePlan;
+                return (
+                  <div
+                    key={vendor.id}
+                    className={`col-span-3 text-xs flex flex-col items-start gap-1 font-mono p-2.5 rounded-xl transition-all ${
+                      hasFree
+                        ? "bg-blue-500/10 dark:bg-blue-950/40 border-2 border-blue-500/60 shadow-xs text-blue-700 dark:text-blue-300"
+                        : "border border-transparent"
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5">
+                      {hasFree ? (
+                        <>
+                          <Check className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 stroke-[3]" />
+                          <span className="font-bold">Available</span>
+                        </>
+                      ) : (
+                        <>
+                          <Minus className="w-3.5 h-3.5 text-muted-foreground" />
+                          <span className="text-muted-foreground">14-day trial only</span>
+                        </>
+                      )}
+                    </div>
+                    {hasFree && (
+                      <span className="inline-flex items-center text-[9px] font-mono font-bold text-white bg-blue-600 px-1.5 py-0.5 rounded-md shadow-2xs">
+                        ★ Free Tier
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Metric 5: Plan Name & Minimum Seats */}
             <div className="grid grid-cols-12 gap-3 py-3 items-center">
               <div className="col-span-3 text-xs font-medium text-muted-foreground">
-                Base Plan Tested
+                Base Plan & Min Seats
               </div>
-              {computed.map(({ vendor, plan }) => (
-                <div key={vendor.id} className="col-span-3 text-xs text-foreground font-semibold">
-                  {plan.name}
-                  {plan.minSeats > 1 && (
-                    <span className="block text-[10px] text-muted-foreground font-mono">
-                      (Min {plan.minSeats} seats)
-                    </span>
-                  )}
-                </div>
-              ))}
+              {computed.map(({ vendor, plan }) => {
+                const isBestSeats = (plan.minSeats || 1) === bestMinSeats && bestMinSeats <= 1;
+                return (
+                  <div
+                    key={vendor.id}
+                    className={`col-span-3 text-xs space-y-1 p-2.5 rounded-xl transition-all ${
+                      isBestSeats
+                        ? "bg-blue-500/10 dark:bg-blue-950/40 border-2 border-blue-500/60 shadow-xs text-blue-700 dark:text-blue-300"
+                        : "border border-transparent text-foreground"
+                    }`}
+                  >
+                    <div className="font-semibold">{plan.name}</div>
+                    <div className="text-[10px] font-mono text-muted-foreground">
+                      {plan.minSeats > 1 ? `Min ${plan.minSeats} seats` : "No minimum (1 seat)"}
+                    </div>
+                    {isBestSeats && (
+                      <span className="inline-flex items-center text-[9px] font-mono font-bold text-white bg-blue-600 px-1.5 py-0.5 rounded-md shadow-2xs">
+                        ★ 1 Seat Minimum
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Metric 6: Contract Terms */}

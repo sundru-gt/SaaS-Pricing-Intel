@@ -82,10 +82,6 @@ export default function Header({
                 <span className="font-bold text-xs sm:text-sm tracking-tight text-[#261619] dark:text-white font-mono">
                   PRICING INTEL
                 </span>
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                </span>
               </div>
               <p className="text-[10px] text-[#7D686E] dark:text-[#8E8BA7] font-mono hidden sm:block truncate">
                 Latest 2026 Benchmarks

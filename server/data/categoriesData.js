@@ -13,7 +13,7 @@ export const CATEGORIES = [
       "freshsales pricing"
     ],
     description: "Manage sales pipelines, customer interactions, and lead deals with transparent seat-based pricing.",
-    summaryTemplate: "Starting rates at the CRM vendors on this page run from $12/user/mo (Zoho CRM Standard, billed annually) to $330/user/mo (Salesforce Unlimited). Most small sales teams start between $14 and $34 per rep monthly. Free plans exist for up to 3 users but omit pipeline automation and phone integrations.",
+    summaryTemplate: "Starting rates at the CRM vendors on this page run from $12/user/mo (Zoho CRM Standard, billed annually) up to $330/user/mo (Salesforce Unlimited). Most small sales teams start between $14 and $34 per rep monthly for core pipeline tracking, email sync, and deal stages. Permanent free tiers exist for up to 3 users on platforms like Zoho and Freshsales, though they strictly omit automated workflows, telephony, and custom reporting. Committing to annual billing agreements yields between 15% and 25% savings compared to flexible month-to-month contracts. Procurement teams must also budget for essential add-ons such as data storage overages, workflow webhooks, and contact enrichment credits.",
     heroQuestion: "Calculate your CRM software cost across plans and team sizes.",
     sources: [
       { name: "Salesforce Official Pricing", url: "https://www.salesforce.com/editions-pricing/sales-cloud/", verified: "2026-01-15" },
@@ -69,7 +69,7 @@ export const CATEGORIES = [
       "trello pricing"
     ],
     description: "Coordinate team roadmaps, sprint backlogs, and client projects with flexible per-user models.",
-    summaryTemplate: "Project management tools start from $0 (Trello / Jira up to 10 users) up to $24.99/user/mo for premium suites. Most teams land on $7 to $12 per seat billed annually. Beware of minimum seat increments (e.g. 3-seat or 5-seat minimums on monday.com).",
+    summaryTemplate: "Project management software pricing begins from free community tiers (Trello and Jira for up to 10 users) up to $24.99/user/mo for premium enterprise suites. Growing teams typically invest between $7 and $13 per seat monthly when billed under an annual commitment. Beware of enforced minimum seat increments, such as the rigid 3-seat package requirement mandated on all monday.com paid plans. Most vendors distinguish sharply between billable full members and free guest viewers, making permission governance critical for cost control. Additional charges often apply for advanced automations, enterprise SSO security, and extended Gantt timeline history.",
     heroQuestion: "Estimate monthly and annual project management licensing for your team.",
     sources: [
       { name: "Asana Official Pricing", url: "https://asana.com/pricing", verified: "2026-01-15" },
@@ -126,7 +126,7 @@ export const CATEGORIES = [
       "zoho books"
     ],
     description: "Manage book-keeping, GST/sales tax invoices, expenses, and ledger audits with fixed or tiered pricing.",
-    summaryTemplate: "Accounting software pricing diverges sharply: cloud tools like QuickBooks start at $30-$90/mo for fixed entity subscriptions with user caps, while Xero charges $15-$78/mo, and TallyPrime offers perpetual/subscription licenses in India from ₹18,000 to ₹54,000.",
+    summaryTemplate: "Accounting software pricing diverges sharply based on entity architecture: cloud platforms like QuickBooks start at $30 to $90/mo for single-entity packages with strict user limits, while Xero charges $15 to $78/mo. In India, TallyPrime offers perpetual licenses from ₹18,000 for single users up to ₹54,000 for multi-user networks alongside annual rental choices. Most cloud providers offer 14 to 30 day trials but omit permanent free plans, with entry tiers limiting monthly billable client invoices. Annual prepayment agreements typically yield 15% to 20% savings over standard monthly billing terms. Extra fees frequently emerge for automated payroll processing, advanced inventory tracking, multi-currency conversion, and dedicated CPA accountant seats.",
     heroQuestion: "Calculate your accounting & invoicing expenses per organization.",
     sources: [
       { name: "Intuit QuickBooks Pricing", url: "https://quickbooks.intuit.com/pricing/", verified: "2026-01-15" },
@@ -183,7 +183,7 @@ export const CATEGORIES = [
       "greythr"
     ],
     description: "Automate salary disbursals, tax withholdings, compliance, leave tracking, and contractor payouts.",
-    summaryTemplate: "HR & Payroll pricing always follows a Base Fee + Per-Employee/Month format (e.g., Gusto Simple is $40 base + $6/person/mo). In India, platforms like greytHR and Keka charge ₹15-₹90 per employee monthly with modular HR add-ons.",
+    summaryTemplate: "HR & Payroll platforms universally adopt a compound pricing structure consisting of a base platform fee plus a variable per-employee monthly charge (such as Gusto's $40 base + $6/person/mo). In India, modern solutions like greytHR and Keka range from ₹15 to ₹90 per employee monthly, subject to 20-to-25 minimum employee commitments. Free tiers are virtually nonexistent in payroll due to tax filing liabilities, making free trials or sandbox environments the standard entry point. Upfront annual commitments unlock approximately 18% to 22% in cost reductions compared to monthly flex arrangements. Organizations should actively account for year-end tax compliance charges (W-2 and Form 16 filing), contractor-only surcharges, and modular benefits administration add-ons.",
     heroQuestion: "Calculate total base fee plus per-employee monthly payroll costs.",
     sources: [
       { name: "Gusto Official Pricing", url: "https://gusto.com/pricing", verified: "2026-01-15" },
@@ -237,7 +237,7 @@ export const CATEGORIES = [
       "microsoft teams pricing"
     ],
     description: "Real-time team messaging, channels, audio huddles, and document collaboration workspaces.",
-    summaryTemplate: "Collaboration pricing benchmarks: Slack starts at $7.25/user/mo (Pro, billed annually) or $8.75 monthly. Microsoft Teams Essentials starts at $4.00/user/mo, or $6.00/user/mo bundled with Microsoft 365 Business Basic (including Exchange, OneDrive, Word, Excel).",
+    summaryTemplate: "Team messaging and collaboration suites benchmark between $4.00/user/mo for Microsoft Teams Essentials up to $15.00/user/mo for Slack Business+ when paid annually. Small to mid-sized organizations spend an average of $7.25 to $8.75 per seat monthly for professional messaging, video huddles, and file search. Freemium editions remain widely accessible but enforce restrictive operational limits, such as Slack's 90-day message history cap and Teams free 60-minute meeting window. Bundling collaboration within complete productivity ecosystems like Microsoft 365 Business Basic ($6.00/user/mo with Exchange, Word, and Excel) delivers significant cost-per-user advantages. Upgrading to enterprise tiers is primarily driven by regulatory compliance, eDiscovery audit requirements, and single sign-on (SSO) integrations.",
     heroQuestion: "Compare Slack and Microsoft Teams annual license commitments.",
     sources: [
       { name: "Slack Pricing Official", url: "https://slack.com/pricing", verified: "2026-01-15" },
@@ -285,7 +285,7 @@ export const CATEGORIES = [
       "goto meeting"
     ],
     description: "HD video meetings, team webinars, screen-sharing, AI meeting summaries, and dial-in conference lines.",
-    summaryTemplate: "Video conferencing standard plans run from $13.33/license/mo (Zoom Pro billed annually at $159.90/yr) to $14.50/user/mo (Webex Meet). Google Meet is available standalone or within Google Workspace starting at $6/user/mo. Free tiers limit group calls to 40-60 minutes.",
+    summaryTemplate: "Video conferencing standard host licenses span from $13.33/license/mo (Zoom Pro billed annually at $159.90/yr) to $14.50/user/mo for Webex Meet. Standalone Google Meet is available for individual users or bundled within Google Workspace starting at $6.00/user/mo. Free tiers across all major providers enforce hard meeting cutoffs, capping group sessions at 40 minutes on Zoom and 60 minutes on Google Meet and Webex. Purchasing annual host licenses saves between 16% and 20% compared to month-to-month subscriptions. Crucially, companies only need to license active meeting hosts rather than every participant, though webinar broadcasting add-ons incur significant extra fees ranging from $79 to $340 monthly.",
     heroQuestion: "Calculate meeting host licensing and webinar add-on costs.",
     sources: [
       { name: "Zoom Official Pricing", url: "https://zoom.us/pricing", verified: "2026-01-15" },
@@ -336,7 +336,7 @@ export const CATEGORIES = [
       "tableau pricing"
     ],
     description: "Product event tracking, conversion funnels, retention cohorts, executive BI dashboards, and data visualization.",
-    summaryTemplate: "Analytics pricing breaks into two models: Product event-based (Mixpanel free up to 20M events, then ~$28/mo; Amplitude free up to 50K MTUs) vs Business Intelligence per-creator seats (Power BI Pro at $10/user/mo; Tableau Creator at $75/user/mo).",
+    summaryTemplate: "Analytics software pricing is split across two divergent billing philosophies: event-based product tracking versus creator seat-based business intelligence. Product analytics platforms like Mixpanel provide generous free tiers (up to 20 million events monthly) before scaling from $28/mo, while Amplitude offers free tracking for 50,000 monthly users. On the business intelligence side, Microsoft Power BI Pro benchmarks at an aggressive $10/user/mo compared to Tableau Creator licenses at $75/user/mo. Annual contracts in this category unlock volume tier discounts ranging from 15% to 30% alongside predictable consumption thresholds. Teams should carefully monitor monthly event spikes and data warehouse egress charges to prevent unexpected mid-contract overage bills.",
     heroQuestion: "Calculate your analytics costs by events or BI creator licenses.",
     sources: [
       { name: "Mixpanel Official Pricing", url: "https://mixpanel.com/pricing/", verified: "2026-01-15" },
@@ -386,7 +386,7 @@ export const CATEGORIES = [
       "trustradius"
     ],
     description: "Verified B2B software buyer reviews, quadrant grids, buyer intent data, and lead generation directories.",
-    summaryTemplate: "For buyers, software review directories (G2, Capterra, TrustRadius) are 100% free. For software vendors listing their products, standard profiles are free, but sponsored PPC clicks on Capterra run $2-$15/click and G2 buyer intent marketing packages cost $10,000-$30,000+/year.",
+    summaryTemplate: "For software buyers and procurement researchers, business software comparison directories like G2, Capterra, and TrustRadius are 100% free to access. For software vendors seeking prospective customers, basic company profile listings are free, but sponsored buyer acquisition is heavily monetized. Pay-Per-Click directory placement through Gartner Digital Markets averages $2 to $15 per click depending on category competitiveness. Comprehensive G2 buyer intent data feeds and marketing profile syndication cost between $10,000 and $35,000+ per year. Annual vendor advertising commitments frequently secure guaranteed category review incentives, branded profile landing pages, and lead delivery integrations.",
     heroQuestion: "Understand buyer vs vendor costs on software comparison platforms.",
     sources: [
       { name: "G2 Vendor Solutions", url: "https://sell.g2.com/pricing", verified: "2026-01-15" },
@@ -431,7 +431,7 @@ export const ALL_CATEGORY = {
   slug: "all",
   keywords: ["saas", "software", "all", "pricing", "tools", "compare"],
   description: "Browse verified pricing, free plan limits, and per-seat calculations across all 8 major business SaaS categories.",
-  summaryTemplate: "Across 28+ leading B2B SaaS vendors, starting prices range from free community tiers to $330/user/mo for enterprise suites. Small teams of 10 average $140-$450/month across their core tech stack. Annual billing unlocks an average 18% to 25% savings.",
+  summaryTemplate: "Across 28+ leading B2B SaaS platforms evaluated, entry prices range from free community editions to $330/user/mo for enterprise suites. Typical small companies with 10 employees invest between $140 and $450 monthly across their fundamental sales, productivity, and collaboration stack. Permanent freemium tiers are provided by roughly 42% of modern software vendors, though they consistently enforce user caps and restrict automated workflow integrations. Committing to upfront annual contracts delivers an average 18% to 25% discount across the market compared to month-to-month arrangements. Technology leaders must account for hidden expenditures, including inactive license creep, premium API connectors, and contractual annual renewal price escalations.",
   heroQuestion: "Select seats and compare total tech stack investment across all categories.",
   sources: [
     { name: "Official Vendor Pricing Pages (Aggregate)", url: "https://saas-comparison.local/sources", verified: "2026-01-15" },

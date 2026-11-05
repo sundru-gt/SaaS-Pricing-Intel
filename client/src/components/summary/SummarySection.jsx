@@ -189,12 +189,13 @@ export default function SummarySection({
           )}
         </p>
 
-        {displayedText && displayedText.length > 120 && (
+        {displayedText && (
           <button
+            type="button"
             onClick={() => setExpanded(!expanded)}
             className="inline-flex items-center gap-1 text-xs font-semibold text-[#8E2631] dark:text-[#A78BFA] hover:underline transition-colors py-0.5 group cursor-pointer"
           >
-            <span>{expanded ? "Show less" : "Read more"}</span>
+            <span>{expanded ? "Read less" : "Read more"}</span>
             {expanded ? (
               <ChevronUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
             ) : (
